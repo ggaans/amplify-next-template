@@ -13,6 +13,7 @@ const schema = a.schema({
       content: a.string(),
     })
     .authorization((allow) => [allow.publicApiKey()]),
+  
   sayHello: a
   .query()
   .arguments({
@@ -27,7 +28,8 @@ export type Schema = ClientSchema<typeof schema>;
 export const data = defineData({
   schema,
   authorizationModes: {
-    defaultAuthorizationMode: "apiKey",
+    //defaultAuthorizationMode: "apiKey",
+    defaultAuthorizationMode: "iam",
     apiKeyAuthorizationMode: {
       expiresInDays: 30,
     },
